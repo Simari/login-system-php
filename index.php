@@ -11,8 +11,8 @@
               ?>
 
               <p>
-                <a href="/login.php">Login</a>
-                <a href="/register.php">Register</a>
+                <a href="login-system-php/login.php">Login</a>
+                <a href="login-system-php/register.php">Register</a>
               </p>
         </div>
 
