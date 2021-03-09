@@ -1,0 +1,28 @@
+<?php
+if (!defined('__CONFIG__')) {
+    exit('You do not have a config file');
+}
+class DB {
+
+    protected static $con;
+
+    private function __construct(){
+
+        try {
+            self::$con = new PDO('mysql:charset=UTF8;host=localhost;port=3308;dbname=logindb','root','');
+            self::$con->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+            self::$con->setAttribute( PDO::ATTR_PERSISTENT,false );
+        } catch (PDOException $e) {
+            echo "Cron could not connect to database.\r\n" . $e->getMessage();
+            exit;
+        }
+    }
+
+    public static function getConnection(){
+        if(!self::$con){
+            new DB();
+        }
+        return self::$con;
+    }
+}
+?>
